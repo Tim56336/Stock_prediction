@@ -1,0 +1,12 @@
+test_Transformer_ETTh2_ftM_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_test_0  
+mse:2.0190980434417725, mae:1.157309889793396
+
+test_Transformer_ETTh2_ftM_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_test_1  
+mse:2.351186990737915, mae:1.2574633359909058
+
+Stock2330_ns_Transformer_custom_ftM_sl30_ll0_pl1_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_stock2330_0  
+mse:0.0036971529480069876, mae:0.04427294805645943
+
+Stock2330_ns_Transformer_custom_ftM_sl30_ll0_pl1_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_stock2330_0  
+mse:0.0036971529480069876, mae:0.04427294805645943
+
