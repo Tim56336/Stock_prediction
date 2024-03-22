@@ -4,6 +4,7 @@ from models import Transformer, Informer, Autoformer
 from ns_models import ns_Transformer, ns_Informer, ns_Autoformer
 from utils.tools import EarlyStopping, adjust_learning_rate, visual
 from utils.metrics import metric
+from mamba_ssm.models import mamba
 
 import numpy as np
 import torch
@@ -32,6 +33,7 @@ class Exp_Main(Exp_Basic):
             'ns_Transformer': ns_Transformer,
             'ns_Informer': ns_Informer,
             'ns_Autoformer': ns_Autoformer,
+            'mamba': mamba
         }
         model = model_dict[self.args.model].Model(self.args).float()
 
