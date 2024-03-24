@@ -1,5 +1,5 @@
 python -u run.py \
-  --is_training 0 \
+  --is_training 1 \
   --root_path ./data/stock/ \
   --data_path stock01.csv \
   --model_id Stock2330 \

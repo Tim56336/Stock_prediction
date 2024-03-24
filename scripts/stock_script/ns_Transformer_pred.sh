@@ -1,4 +1,4 @@
-python -u run.py \
+python -u run_pred.py \
   --is_training 0 \
   --root_path ./data/stock/ \
   --data_path 2330_0322.csv \

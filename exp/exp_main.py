@@ -4,8 +4,9 @@ from models import Transformer, Informer, Autoformer
 from ns_models import ns_Transformer, ns_Informer, ns_Autoformer
 from utils.tools import EarlyStopping, adjust_learning_rate, visual
 from utils.metrics import metric
-from mamba_ssm.models import mamba
+# from mamba_ssm.models import mamba
 
+from torchsummary import summary
 import numpy as np
 import torch
 import torch.nn as nn
@@ -33,7 +34,7 @@ class Exp_Main(Exp_Basic):
             'ns_Transformer': ns_Transformer,
             'ns_Informer': ns_Informer,
             'ns_Autoformer': ns_Autoformer,
-            'mamba': mamba
+            # 'mamba': mamba
         }
         model = model_dict[self.args.model].Model(self.args).float()
 
@@ -281,7 +282,7 @@ class Exp_Main(Exp_Basic):
             path = os.path.join(self.args.checkpoints, setting)
             best_model_path = path + '/' + 'checkpoint.pth'
             self.model.load_state_dict(torch.load(best_model_path))
-
+            # summary(self.model, [(30,4), (30,4),(1,4),(1,4)])
         preds = []
 
         self.model.eval()
@@ -299,13 +300,17 @@ class Exp_Main(Exp_Basic):
                 if self.args.use_amp:
                     with torch.cuda.amp.autocast():
                         if self.args.output_attention:
+                            print('shape:',batch_x.shape, batch_x_mark.shape, dec_inp.shape, batch_y_mark.shape)
                             outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                         else:
+                            print('shape:',batch_x.shape, batch_x_mark.shape, dec_inp.shape, batch_y_mark.shape)
                             outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                 else:
                     if self.args.output_attention:
+                        print('shape:',batch_x.shape, batch_x_mark.shape, dec_inp.shape, batch_y_mark.shape)
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                     else:
+                        print('shape:',batch_x.shape, batch_x_mark.shape, dec_inp.shape, batch_y_mark.shape)
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                 pred = outputs.detach().cpu().numpy()  # .squeeze()
                 preds.append(pred)
